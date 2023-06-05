@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   // STRUCTURE OF THE APP
 
-  // Router: 1. Home page 2. Shopping page
+  // Router (component): 1. Home page 2. Shopping page
 
   // Home page (component): Contains only styling, information, assets, and a shopping button that
   // to the shopping page. The shopping button will be the only functional button navigates the user
