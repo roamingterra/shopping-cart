@@ -1,4 +1,5 @@
 import Home from "./components/Home";
+import Shopping from "./components/Shopping.js";
 
 function App() {
   // STRUCTURE OF THE APP
@@ -26,7 +27,8 @@ function App() {
 
   return (
     <div className="App">
-      <Home></Home>
+      {/* <Home></Home> */}
+      <Shopping></Shopping>
     </div>
   );
 }

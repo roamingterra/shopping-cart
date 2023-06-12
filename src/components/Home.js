@@ -2,8 +2,19 @@ import React from "react";
 import homeCss from "./../styles/home.module.css";
 
 function Home() {
+  function blackPageBackground() {
+    const html = document.querySelector("html");
+    const body = document.querySelector("body");
+    const root = document.querySelector("#root");
+    html.style.backgroundColor = "black";
+    body.style.backgroundColor = "black";
+    root.style.backgroundColor = "black";
+  }
+
+  blackPageBackground();
+
   return (
-    <div>
+    <div className={homeCss["home-component"]}>
       <div className={homeCss["content-wrapper"]}>
         <div className={homeCss["main-content-1"]}>
           <div className={homeCss["header"]}>

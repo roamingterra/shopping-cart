@@ -1,0 +1,274 @@
+@font-face {
+  font-family: "Gordita-Regular";
+  src: url(/public/fonts/gordita-cufonfonts-webfont/Gordita\ Regular.woff);
+}
+
+@font-face {
+  font-family: "Gordita-Medium";
+  src: url(/public/fonts/gordita-cufonfonts-webfont/Gordita\ Medium.woff);
+}
+
+@font-face {
+  font-family: "Gordita-Bold";
+  src: url(/public/fonts/gordita-cufonfonts-webfont/Gordita\ Bold.woff);
+}
+
+.shopping-component {
+  font-family: "Gordita-Regular";
+  background-color: white;
+  width: 100%;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-large {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  font-size: 25px;
+  color: #ff0099;
+}
+
+.shopping-cart {
+  width: auto;
+  height: auto;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.shopping-cart:hover {
+  transform: scale(1.2);
+}
+
+/* SECTION 1 */
+.main-content-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-family: "Gordita-Bold";
+  text-align: center;
+  margin: 0 20px;
+}
+
+/* SECTION 2 */
+.main-content-2 {
+}
+
+/* SECTION 3 */
+.main-content-3 {
+  display: flex;
+  flex-direction: column;
+  margin: 0 134px;
+  padding: 60px 0;
+}
+
+.main-content-3-title {
+  font-size: 42px;
+  font-family: "Gordita-Medium";
+  align-self: center;
+}
+
+.frequently-asked-questions {
+  width: 66.66%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
+  font-family: "Gordita-Medium";
+}
+
+.faq {
+  display: flex;
+  align-items: center;
+  padding: 20px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 2px rgba(46, 50, 60, 0.09);
+  cursor: pointer;
+  transition: box-shadow 0.5s ease;
+  transition-delay: 0.05s;
+}
+
+.faq:hover {
+  box-shadow: 0 4px 8px rgba(32, 34, 41, 0.09);
+}
+
+.faq > div {
+  flex-grow: 1;
+}
+
+/* SECTION 4 */
+.main-content-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0 80px 0;
+  background-color: #ff0099;
+  color: white;
+}
+
+.main-content-4 > div:first-child {
+  font-size: 42px;
+}
+
+.main-content-4 > div:nth-child(2) {
+  font-size: 20px;
+  padding: 16px 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.main-content-4 > button {
+  padding: 20px 15px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  font-family: "Gordita-Medium";
+  width: 240px;
+  border-radius: 10px;
+  border: 0;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+
+.main-content-4 > button:hover {
+  background-color: rgb(232, 228, 228);
+}
+
+.main-content-4 > button:active {
+  background-color: white;
+}
+
+/* FOOTER */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: var(--font-color);
+  border-top: solid var(--border-color) 0.1px;
+  padding: 20px 36px;
+  font-size: 12px;
+}
+
+.credits {
+  display: flex;
+  flex-direction: column;
+}
+
+.legal-information {
+  display: flex;
+  gap: 20px;
+}
+
+.legal-information > div {
+  cursor: pointer;
+}
+
+a {
+  color: var(--font-color);
+}
+
+@media screen and (max-width: 1024px) {
+  /* SECTION 3 */
+  .main-content-3 {
+    margin: 0 70px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* SECTION 3 */
+  .main-content-3 {
+    margin: 0 20px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  /* FOOTER */
+  .footer {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .credits {
+    flex-direction: row;
+    gap: 4px;
+  }
+}
+
+@media screen and (max-width: 465px) {
+  /* FOOTER */
+  .credits {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  /* SECTION 3 */
+  .main-content-3 {
+    margin: 0;
+  }
+
+  .frequently-asked-questions {
+    width: 90%;
+  }
+
+  /* SECTION 4 */
+  .main-content-4 > div:nth-child(2) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  /* FOOTER */
+  .legal-information {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  /* SECTION 3 */
+  .frequently-asked-questions {
+    width: 95%;
+  }
+
+  /* SECTION 4 */
+  .main-content-4 > div:nth-child(2) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  /* SECTION 1 */
+  .main-content-1 {
+    font-size: 28px;
+  }
+
+  /* SECTION 3 */
+  .main-content-3-title {
+    font-size: 32px;
+  }
+
+  .frequently-asked-questions {
+    width: 100%;
+  }
+
+  /* SECTION 4 */
+  .main-content-4 > div:first-child {
+    font-size: 36px;
+  }
+
+  .main-content-4 > div:nth-child(2) {
+    font-size: 16px;
+  }
+}

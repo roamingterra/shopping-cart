@@ -1,5 +1,7 @@
 import React from "react";
 
-function Product() {}
+function Product() {
+  return <div></div>;
+}
 
 export default Product;
