@@ -1,5 +1,6 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { MemoryRouter, Routes, Route, Link } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 import Home from "./components/Home";
@@ -15,16 +16,45 @@ describe("Home component", () => {
   });
 });
 
-// Test the rendering of the shopping page
-describe("Shopping component", () => {
-  it("Renders correctly", () => {
-    const { container } = render(<Shopping />);
-    expect(container).toMatchSnapshot();
+// ROUTE TESTING
+describe("Test Routing Works", () => {
+  // Test the web app starting at the home page
+  test("Initial navigation to the home page", () => {
+    const { asFragment } = render(
+      // asFragment returns a serializable representation of the rendered component's output.
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+  // Test the routing behavior from the home page to the shopping page
+  test("Navigate to the shopping page", () => {
+    render(
+      // Memory Router simulates routing behavior
+      <MemoryRouter initialEntries={["/"]}>
+        <Home />
+        <Shopping />
+      </MemoryRouter>
+    );
+
+    // Get all the buttons with the text "shopping"
+    const shoppingButtons = screen.getAllByText("Shopping");
+
+    // Assert that there are multiple buttons
+    expect(shoppingButtons).toHaveLength(2);
+
+    // Iterate over the buttons and simulate a click event
+    shoppingButtons.forEach((button) => {
+      fireEvent.click(button);
+
+      // Assert that the navigation occurred
+      const shoppingPage = screen.getByTestId("shopping-page");
+      expect(shoppingPage).toBeInTheDocument();
+    });
   });
 });
-
-// ROUTE TESTING
-// Test the routing behavior from the home page to the shopping page
 
 // LOGIC TESTING
 // Test the functionality of the input fields for the user to manually type in the item quantities

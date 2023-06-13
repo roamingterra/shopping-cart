@@ -110,7 +110,10 @@ function Shopping() {
   whitePageBackground();
 
   return (
-    <div className={shoppingCss["shopping-component"]}>
+    <div
+      data-testid="shopping-page"
+      className={shoppingCss["shopping-component"]}
+    >
       <div className={shoppingCss["side-bar"]}>
         <div className={shoppingCss["side-bar-header"]}>
           <Icon
