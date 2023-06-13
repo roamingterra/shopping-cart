@@ -1,7 +1,9 @@
 import React from "react";
 import Icon from "@mdi/react";
 import { mdiCartOutline } from "@mdi/js";
+import { mdiWindowClose } from "@mdi/js";
 import Product from "./Product";
+import ShoppingCartProduct from "./ShoppingCartProduct";
 import shoppingCss from "./../styles/shopping.module.css";
 
 function Shopping() {
@@ -109,128 +111,189 @@ function Shopping() {
 
   return (
     <div className={shoppingCss["shopping-component"]}>
-      <div className={shoppingCss["content-wrapper"]}>
-        <div className={shoppingCss["header"]}>
-          <div className={shoppingCss["logo-large"]}>
-            <div>roamingterra</div>
-          </div>
+      <div className={shoppingCss["side-bar"]}>
+        <div className={shoppingCss["side-bar-header"]}>
           <Icon
-            className={shoppingCss["shopping-cart"]}
+            className={shoppingCss["side-bar-close"]}
+            path={mdiWindowClose}
+            size={2}
+          />
+          <Icon
+            className={shoppingCss["side-bar-shopping-cart"]}
             path={mdiCartOutline}
             title="Shopping Cart"
             size={2}
           />
         </div>
-        <div className={shoppingCss["main-content-1"]}>
-          Choose your language learning software
+        <div className={shoppingCss["shopping-cart-empty-message"]}>
+          Your cart is empty
         </div>
-        <div className={shoppingCss["main-content-2"]}>
-          <Product
-            productName={productInfo.productNames.english}
-            image={productInfo.imagePaths.english}
-            description={productInfo.descriptions.english}
-            price={productInfo.pricing.english}
-          ></Product>
-          <Product
-            productName={productInfo.productNames.french}
-            image={productInfo.imagePaths.french}
-            description={productInfo.descriptions.french}
-            price={productInfo.pricing.french}
-          ></Product>
-          <Product
-            productName={productInfo.productNames.mandarin}
-            image={productInfo.imagePaths.mandarin}
-            description={productInfo.descriptions.mandarin}
-            price={productInfo.pricing.mandarin}
-          ></Product>
-          <Product
-            productName={productInfo.productNames.spanish}
-            image={productInfo.imagePaths.spanish}
-            description={productInfo.descriptions.spanish}
-            price={productInfo.pricing.spanish}
-          ></Product>
-          <Product
-            productName={productInfo.productNames.german}
-            image={productInfo.imagePaths.german}
-            description={productInfo.descriptions.german}
-            price={productInfo.pricing.german}
-          ></Product>
-          <Product
-            productName={productInfo.productNames.japanese}
-            image={productInfo.imagePaths.japanese}
-            description={productInfo.descriptions.japanese}
-            price={productInfo.pricing.japanese}
-          ></Product>
-          <Product
-            productName={productInfo.productNames.italian}
-            image={productInfo.imagePaths.italian}
-            description={productInfo.descriptions.italian}
-            price={productInfo.pricing.italian}
-          ></Product>
-          <Product
-            productName={productInfo.productNames.portuguese}
-            image={productInfo.imagePaths.portuguese}
-            description={productInfo.descriptions.portuguese}
-            price={productInfo.pricing.portuguese}
-          ></Product>
-          <Product
-            productName={productInfo.productNames.hindi}
-            image={productInfo.imagePaths.hindi}
-            description={productInfo.descriptions.hindi}
-            price={productInfo.pricing.hindi}
-          ></Product>
-          <Product
-            productName={productInfo.productNames.arabic}
-            image={productInfo.imagePaths.arabic}
-            description={productInfo.descriptions.arabic}
-            price={productInfo.pricing.arabic}
-          ></Product>
-        </div>
-        <div className={shoppingCss["main-content-3"]}>
-          <div className={shoppingCss["main-content-3-title"]}>FAQs</div>
-          <div className={shoppingCss["frequently-asked-questions"]}>
-            <div className={shoppingCss["faq"]}>
-              <div>
-                <div>What are the cancellation terms?</div>
-              </div>
-              <img src="/images/arrow-icon.svg" alt="arrow icon"></img>
-            </div>
-            <div className={shoppingCss["faq"]}>
-              <div>
-                <div>
-                  How long does it take to become fluent in a new language using
-                  this software?
-                </div>
-              </div>
-              <img src="/images/arrow-icon.svg" alt="arrow icon"></img>
-            </div>
-            <div className={shoppingCss["faq"]}>
-              <div>
-                <div>Can I access the language learning materials offline?</div>
-              </div>
-              <img src="/images/arrow-icon.svg" alt="arrow icon"></img>
-            </div>
+        <div className={shoppingCss["side-bar-main-content"]}>
+          <div className={shoppingCss["side-bar-products"]}>
+            {/* <ShoppingCartProduct
+              productName={productInfo.productNames.english}
+              image={productInfo.imagePaths.english}
+              price={productInfo.pricing.english}
+            ></ShoppingCartProduct> */}
+            {/* <ShoppingCartProduct
+              productName={productInfo.productNames.french}
+              image={productInfo.imagePaths.french}
+              price={productInfo.pricing.french}
+            ></ShoppingCartProduct> */}
+            {/* <ShoppingCartProduct
+              productName={productInfo.productNames.arabic}
+              image={productInfo.imagePaths.arabic}
+              price={productInfo.pricing.arabic}
+            ></ShoppingCartProduct> */}
+            {/* <ShoppingCartProduct
+              productName={productInfo.productNames.spanish}
+              image={productInfo.imagePaths.spanish}
+              price={productInfo.pricing.spanish}
+            ></ShoppingCartProduct> */}
+            {/* <ShoppingCartProduct
+              productName={productInfo.productNames.mandarin}
+              image={productInfo.imagePaths.mandarin}
+              price={productInfo.pricing.mandarin}
+            ></ShoppingCartProduct> */}
           </div>
-        </div>
-        <div className={shoppingCss["main-content-4"]}>
-          <div>Let's talk</div>
-          <div>Do you have any questions? Contact us and let's discuss it.</div>
-          <button>Contact us</button>
+          <div className={shoppingCss["side-bar-sub-total"]}>
+            <div>Subtotal</div>
+            <div className={shoppingCss["total"]}>$100</div>
+          </div>
+          <button className={shoppingCss["side-bar-checkout"]}>
+            PROCEED TO CHECKOUT
+          </button>
         </div>
       </div>
-      <div className={shoppingCss["footer"]}>
-        <div className={shoppingCss["logo-small"]}>roamingterra</div>
-        <div className={shoppingCss["legal-information"]}>
-          <div>Privacy Policy</div>
-          <div>Cookie Policy</div>
-          <div>EULA</div>
-          <div>Copyright</div>
+      <div className={shoppingCss["overlay"]}></div>
+      <div className={shoppingCss["content-and-footer-wrapper"]}>
+        <div className={shoppingCss["content-wrapper"]}>
+          <div className={shoppingCss["header"]}>
+            <div className={shoppingCss["logo-large"]}>
+              <div>roamingterra</div>
+            </div>
+            <Icon
+              className={shoppingCss["shopping-cart"]}
+              path={mdiCartOutline}
+              title="Shopping Cart"
+              size={2}
+            />
+          </div>
+          <div className={shoppingCss["main-content-1"]}>
+            Choose your language learning software
+          </div>
+          <div className={shoppingCss["main-content-2"]}>
+            <Product
+              productName={productInfo.productNames.english}
+              image={productInfo.imagePaths.english}
+              description={productInfo.descriptions.english}
+              price={productInfo.pricing.english}
+            ></Product>
+            <Product
+              productName={productInfo.productNames.french}
+              image={productInfo.imagePaths.french}
+              description={productInfo.descriptions.french}
+              price={productInfo.pricing.french}
+            ></Product>
+            <Product
+              productName={productInfo.productNames.mandarin}
+              image={productInfo.imagePaths.mandarin}
+              description={productInfo.descriptions.mandarin}
+              price={productInfo.pricing.mandarin}
+            ></Product>
+            <Product
+              productName={productInfo.productNames.spanish}
+              image={productInfo.imagePaths.spanish}
+              description={productInfo.descriptions.spanish}
+              price={productInfo.pricing.spanish}
+            ></Product>
+            <Product
+              productName={productInfo.productNames.german}
+              image={productInfo.imagePaths.german}
+              description={productInfo.descriptions.german}
+              price={productInfo.pricing.german}
+            ></Product>
+            <Product
+              productName={productInfo.productNames.japanese}
+              image={productInfo.imagePaths.japanese}
+              description={productInfo.descriptions.japanese}
+              price={productInfo.pricing.japanese}
+            ></Product>
+            <Product
+              productName={productInfo.productNames.italian}
+              image={productInfo.imagePaths.italian}
+              description={productInfo.descriptions.italian}
+              price={productInfo.pricing.italian}
+            ></Product>
+            <Product
+              productName={productInfo.productNames.portuguese}
+              image={productInfo.imagePaths.portuguese}
+              description={productInfo.descriptions.portuguese}
+              price={productInfo.pricing.portuguese}
+            ></Product>
+            <Product
+              productName={productInfo.productNames.hindi}
+              image={productInfo.imagePaths.hindi}
+              description={productInfo.descriptions.hindi}
+              price={productInfo.pricing.hindi}
+            ></Product>
+            <Product
+              productName={productInfo.productNames.arabic}
+              image={productInfo.imagePaths.arabic}
+              description={productInfo.descriptions.arabic}
+              price={productInfo.pricing.arabic}
+            ></Product>
+          </div>
+          <div className={shoppingCss["main-content-3"]}>
+            <div className={shoppingCss["main-content-3-title"]}>FAQs</div>
+            <div className={shoppingCss["frequently-asked-questions"]}>
+              <div className={shoppingCss["faq"]}>
+                <div>
+                  <div>What are the cancellation terms?</div>
+                </div>
+                <img src="/images/arrow-icon.svg" alt="arrow icon"></img>
+              </div>
+              <div className={shoppingCss["faq"]}>
+                <div>
+                  <div>
+                    How long does it take to become fluent in a new language
+                    using this software?
+                  </div>
+                </div>
+                <img src="/images/arrow-icon.svg" alt="arrow icon"></img>
+              </div>
+              <div className={shoppingCss["faq"]}>
+                <div>
+                  <div>
+                    Can I access the language learning materials offline?
+                  </div>
+                </div>
+                <img src="/images/arrow-icon.svg" alt="arrow icon"></img>
+              </div>
+            </div>
+          </div>
+          <div className={shoppingCss["main-content-4"]}>
+            <div>Let's talk</div>
+            <div>
+              Do you have any questions? Contact us and let's discuss it.
+            </div>
+            <button>Contact us</button>
+          </div>
         </div>
-        <div className={shoppingCss["credits"]}>
-          <div>Website created by Daniel Ballerini</div>
-          <div>
-            with help from{" "}
-            <a href="https://www.theodinproject.com/"> © Odin Project</a>
+        <div className={shoppingCss["footer"]}>
+          <div className={shoppingCss["logo-small"]}>roamingterra</div>
+          <div className={shoppingCss["legal-information"]}>
+            <div>Privacy Policy</div>
+            <div>Cookie Policy</div>
+            <div>EULA</div>
+            <div>Copyright</div>
+          </div>
+          <div className={shoppingCss["credits"]}>
+            <div>Website created by Daniel Ballerini</div>
+            <div>
+              with help from{" "}
+              <a href="https://www.theodinproject.com/"> © Odin Project</a>
+            </div>
           </div>
         </div>
       </div>

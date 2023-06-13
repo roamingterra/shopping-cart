@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Gordita-Medium";
+  src: url(/public/fonts/gordita-cufonfonts-webfont/Gordita\ Medium.woff);
+}
+
+.product {
+  display: flex;
+  position: relative;
+  padding: 24px 0 24px 24px;
+}
+
+.product::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 2px;
+  background-color: #efd0e3;
+}
+
+.product-image {
+  width: 100px;
+  height: auto;
+  border: solid;
+  margin-right: 20px;
+  filter: brightness(100%) saturate(100%) contrast(150%);
+}
+
+.product-name {
+  font-family: "Gordita-Medium";
+}
+
+.stepper {
+  display: flex;
+  border: solid;
+  border-color: rgb(211, 212, 213);
+}
+
+.decrement,
+.increment {
+  cursor: pointer;
+  color: rgb(211, 212, 213);
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.decrement:hover,
+.increment:hover {
+  transform: scale(1.2);
+  color: black;
+}
+
+.quantity {
+  width: 24px;
+  height: 24px;
+}
+
+.section-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-left: auto;
+}
+
+.remove-product {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.remove-product:hover {
+  transform: rotate(90deg);
+}
+
+@media screen and (max-width: 425px) {
+  .product {
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 345px) {
+  .product-image {
+    width: 80px;
+    height: auto;
+    border: solid;
+    margin-right: 20px;
+    filter: brightness(100%) saturate(100%) contrast(150%);
+  }
+}
