@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import homeCss from "./../styles/home.module.css";
 
 function Home() {
@@ -29,9 +30,11 @@ function Home() {
               Learn some of the world's most spoken languages at home, and on
               the go
             </div>
-            <button className={homeCss["shop-1"]}>
-              <span>Shop</span>
-            </button>
+            <Link to="/shopping">
+              <button className={homeCss["shop-1"]}>
+                <span>Shop</span>
+              </button>
+            </Link>
           </div>
         </div>
         <div className={homeCss["main-content-2"]}>
@@ -102,9 +105,11 @@ function Home() {
             <div className={homeCss["description-5"]}>
               Unlock the world, discover your language journey
             </div>
-            <button className={homeCss["shop-2"]}>
-              <span>Shop</span>
-            </button>
+            <Link to="/shopping">
+              <button className={homeCss["shop-2"]}>
+                <span>Shop</span>
+              </button>
+            </Link>
           </div>
         </div>
         <div className={homeCss["main-content-6"]}>

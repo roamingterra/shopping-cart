@@ -5,6 +5,7 @@ import { mdiWindowClose } from "@mdi/js";
 import Product from "./Product";
 import ShoppingCartProduct from "./ShoppingCartProduct";
 import shoppingCss from "./../styles/shopping.module.css";
+import { Link } from "react-router-dom";
 
 function Shopping() {
   const productInfo = {
@@ -172,9 +173,11 @@ function Shopping() {
       <div className={shoppingCss["content-and-footer-wrapper"]}>
         <div className={shoppingCss["content-wrapper"]}>
           <div className={shoppingCss["header"]}>
-            <div className={shoppingCss["logo-large"]}>
-              <div>roamingterra</div>
-            </div>
+            <Link to="/">
+              <div className={shoppingCss["logo-large"]}>
+                <div>roamingterra</div>
+              </div>
+            </Link>
             <Icon
               className={shoppingCss["shopping-cart"]}
               path={mdiCartOutline}
@@ -284,7 +287,9 @@ function Shopping() {
           </div>
         </div>
         <div className={shoppingCss["footer"]}>
-          <div className={shoppingCss["logo-small"]}>roamingterra</div>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <div className={shoppingCss["logo-small"]}>roamingterra</div>
+          </Link>
           <div className={shoppingCss["legal-information"]}>
             <div>Privacy Policy</div>
             <div>Cookie Policy</div>

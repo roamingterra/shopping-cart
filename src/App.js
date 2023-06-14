@@ -1,4 +1,6 @@
 import Home from "./components/Home";
+import { Routes, Route } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
 import Shopping from "./components/Shopping.js";
 
 function App() {
@@ -27,8 +29,10 @@ function App() {
 
   return (
     <div className="App">
-      <Home></Home>
-      {/* <Shopping></Shopping> */}
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/shopping" element={<Shopping />}></Route>
+      </Routes>
     </div>
   );
 }
