@@ -160,7 +160,9 @@ function Shopping() {
           </div>
           <div className={shoppingCss["side-bar-sub-total"]}>
             <div>Subtotal</div>
-            <div className={shoppingCss["total"]}>$100</div>
+            <div data-testid="total" className={shoppingCss["total"]}>
+              $200
+            </div>
           </div>
           <button className={shoppingCss["side-bar-checkout"]}>
             PROCEED TO CHECKOUT

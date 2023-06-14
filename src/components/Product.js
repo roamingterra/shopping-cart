@@ -16,7 +16,12 @@ function Product(props) {
         <div>{`$${price}`}</div>
         <div>one time payment</div>
       </div>
-      <button className={shoppingCss["add-to-cart"]}>ADD TO CART</button>
+      <button
+        data-testid={`${productName}-add-to-cart`}
+        className={shoppingCss["add-to-cart"]}
+      >
+        ADD TO CART
+      </button>
       <ul className={shoppingCss["product-descriptions"]}>
         <li className={shoppingCss["product-description"]}>{description[0]}</li>
         <li className={shoppingCss["product-description"]}>{description[1]}</li>

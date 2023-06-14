@@ -46,14 +46,106 @@ describe("Test Routing Works", () => {
 });
 
 // LOGIC TESTING
-// Test the functionality of the input fields for the user to manually type in the item quantities
+describe("Add to shopping cart", () => {
+  // Test the functionality of the add to cart buttons. Fire a mock "add to cart" button, and test if that item appears in the shopping cart in the dom
+  test("functionality of add to cart buttons", () => {
+    // Arrange
+    render(
+      <MemoryRouter>
+        <Shopping />
+      </MemoryRouter>
+    );
 
-// Test the functionality of the increment and decrement buttons for the item quantities
+    // Act
+    const addToCartButton = screen.getByTestId("English-add-to-cart");
+    fireEvent.click(addToCartButton);
 
-// Test the functionality of the add to cart buttons
+    //Assert
+    const product = screen.getByTestId("English-shopping-cart");
+    expect(product).toBeInTheDocument();
+  });
+});
 
-// Test adding multiple items to the shopping cart and see if the cart correctly displays the total...
-// quantity and the total price
+describe("Change product quantity logic", () => {
+  // Test the functionality of the increment and decrement buttons for the item quantities.
+  // Fire a mock increment button, and test for the correct total
+  test("functionality of incrementing the product quantity", () => {
+    // Arrange
+    render(
+      <MemoryRouter>
+        <Shopping />
+      </MemoryRouter>
+    );
 
-// ACCESSIBILITY TESTING ???
-// Perform accessibility tests to ensure the components are accessible and responsive across various devices
+    // Act
+    const addToCartButton = screen.getByTestId("English-add-to-cart");
+    fireEvent.click(addToCartButton);
+    const incrementButton = screen.getByTestId("English-increment");
+
+    //Assert
+    fireEvent.click(incrementButton);
+    const total = screen.getByTestId("total");
+    expect(total).toHaveTextContent("$200");
+  });
+
+  test("functionality of decrementing the product quantity", () => {
+    // Arrange
+    render(
+      <MemoryRouter>
+        <Shopping />
+      </MemoryRouter>
+    );
+
+    // Act
+    const addToCartButton = screen.getByTestId("English-add-to-cart");
+    fireEvent.click(addToCartButton);
+    const incrementButton = screen.getByTestId("English-increment");
+    fireEvent.click(incrementButton);
+    fireEvent.click(incrementButton);
+    fireEvent.click(incrementButton);
+
+    //Assert
+    const decrementButton = screen.getByTestId("English-decrement");
+    fireEvent.click(decrementButton);
+    const total = screen.getByTestId("total");
+    expect(total).toHaveTextContent("$200");
+  });
+
+  test("remove product from shopping cart after decrementing from 1", () => {
+    // Arrange
+    render(
+      <MemoryRouter>
+        <Shopping />
+      </MemoryRouter>
+    );
+
+    // Act
+    const addToCartButton = screen.getByTestId("English-add-to-cart");
+    fireEvent.click(addToCartButton);
+
+    //Assert
+    const product = screen.getByTestId("English-shopping-cart");
+    const decrementButton = screen.getByTestId("English-decrement");
+    fireEvent.click(decrementButton);
+    expect(product).not.toBeInTheDocument();
+  });
+
+  test("remove product from shopping cart after pressing the cancel button", () => {
+    // Arrange
+    render(
+      <MemoryRouter>
+        <Shopping />
+      </MemoryRouter>
+    );
+
+    // Act
+    const addToCartButton = screen.getByTestId("English-add-to-cart");
+    fireEvent.click(addToCartButton);
+
+    //Assert
+    const product = screen.getByTestId("English-shopping-cart");
+    const cancel = screen.getByTestId("English-cancel");
+    fireEvent.click(cancel);
+    expect(product).not.toBeInTheDocument();
+  });
+});

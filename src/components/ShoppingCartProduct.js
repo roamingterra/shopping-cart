@@ -9,7 +9,10 @@ function Product(props) {
   const { productName, image, price } = props;
 
   return (
-    <div className={shoppingCartProductsCss["product"]}>
+    <div
+      data-testid={`${productName}-shopping-cart`}
+      className={shoppingCartProductsCss["product"]}
+    >
       <img
         className={shoppingCartProductsCss["product-image"]}
         src={image}
@@ -21,12 +24,14 @@ function Product(props) {
         </div>
         <div className={shoppingCartProductsCss["stepper"]}>
           <Icon
+            data-testid={`${productName}-decrement`}
             className={shoppingCartProductsCss["decrement"]}
             path={mdiMinus}
             size={1}
           />
           <div className={shoppingCartProductsCss["quantity"]}></div>
           <Icon
+            data-testid={`${productName}-increment`}
             className={shoppingCartProductsCss["increment"]}
             path={mdiPlus}
             size={1}
@@ -35,6 +40,7 @@ function Product(props) {
       </div>
       <div className={shoppingCartProductsCss["section-3"]}>
         <Icon
+          data-testid={`${productName}-cancel`}
           className={shoppingCartProductsCss["remove-product"]}
           path={mdiWindowClose}
           size={1}
