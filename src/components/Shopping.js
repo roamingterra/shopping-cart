@@ -102,10 +102,8 @@ function Shopping() {
   function whitePageBackground() {
     const html = document.querySelector("html");
     const body = document.querySelector("body");
-    const root = document.querySelector("#root");
     html.style.backgroundColor = "white";
     body.style.backgroundColor = "white";
-    root.style.backgroundColor = "white";
   }
 
   whitePageBackground();

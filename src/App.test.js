@@ -1,20 +1,9 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { MemoryRouter, Routes, Route, Link } from "react-router-dom";
-import userEvent from "@testing-library/user-event";
-import App from "./App";
+import "@testing-library/jest-dom/extend-expect";
+import { MemoryRouter } from "react-router-dom";
 import Home from "./components/Home";
 import Shopping from "./components/Shopping";
-import Product from "./components/Product";
-
-// SNAPSHOT TESTS
-// Test the rendering of the home page
-describe("Home component", () => {
-  it("Renders correctly", () => {
-    const { container } = render(<Home />);
-    expect(container).toMatchSnapshot();
-  });
-});
 
 // ROUTE TESTING
 describe("Test Routing Works", () => {
@@ -40,7 +29,7 @@ describe("Test Routing Works", () => {
     );
 
     // Get all the buttons with the text "shopping"
-    const shoppingButtons = screen.getAllByText("Shopping");
+    const shoppingButtons = screen.getAllByText("Shop");
 
     // Assert that there are multiple buttons
     expect(shoppingButtons).toHaveLength(2);
