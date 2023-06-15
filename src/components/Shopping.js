@@ -99,6 +99,20 @@ function Shopping() {
     },
   };
 
+  function retractSideBar() {
+    const sidebar = document.querySelector(".shopping_side-bar__JgP6O");
+    const overlay = document.querySelector(".shopping_overlay__lhS4s");
+    sidebar.removeAttribute("id", `${shoppingCss["side-bar-extended"]}`);
+    overlay.style.visibility = "hidden";
+  }
+
+  function extendSideBar() {
+    const sidebar = document.querySelector(".shopping_side-bar__JgP6O");
+    const overlay = document.querySelector(".shopping_overlay__lhS4s");
+    sidebar.setAttribute("id", `${shoppingCss["side-bar-extended"]}`);
+    overlay.style.visibility = "visible";
+  }
+
   function whitePageBackground() {
     const html = document.querySelector("html");
     const body = document.querySelector("body");
@@ -119,6 +133,7 @@ function Shopping() {
             className={shoppingCss["side-bar-close"]}
             path={mdiWindowClose}
             size={2}
+            onClick={retractSideBar}
           />
           <Icon
             className={shoppingCss["side-bar-shopping-cart"]}
@@ -183,6 +198,7 @@ function Shopping() {
               path={mdiCartOutline}
               title="Shopping Cart"
               size={2}
+              onClick={extendSideBar}
             />
           </div>
           <div className={shoppingCss["main-content-1"]}>
