@@ -85,14 +85,14 @@
 }
 
 .shopping-cart-empty-message {
-  display: flex; /* flex */
+  display: none; /* flex */
   justify-content: center;
   padding: 24px;
   font-family: "Gordita-Medium";
 }
 
 .side-bar-main-content {
-  display: none; /* flex */
+  display: flex; /* flex */
   flex-direction: column;
   padding: 0 24px;
 }

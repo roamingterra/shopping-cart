@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { createRoot } from "react-dom/client";
 import Icon from "@mdi/react";
 import { mdiCartOutline } from "@mdi/js";
 import { mdiWindowClose } from "@mdi/js";
@@ -8,6 +9,32 @@ import shoppingCss from "./../styles/shopping.module.css";
 import { Link } from "react-router-dom";
 
 function Shopping() {
+  // State objects and variables
+  const [cartProductQuantities, setCartProductQuantities] = useState({
+    english: 0,
+    french: 0,
+    mandarin: 0,
+    spanish: 0,
+    german: 0,
+    japanese: 0,
+    italian: 0,
+    portuguese: 0,
+    hindi: 0,
+    arabic: 0,
+  });
+
+  const [productToBeAdded, setProductToBeAdded] = useState("");
+
+  // const [productToBePhysicallyAdded, setProductToBePhysicallyAdded] =
+  //   useState("");
+
+  const [cartItems, setCartItems] = useState([]);
+
+  const [updateShoppingCart, setUpdateShoppingCart] = useState(false);
+
+  const [cartTotalPrice, setCartTotalPrice] = useState(0);
+
+  // Product info object
   const productInfo = {
     productNames: {
       english: "English",
@@ -99,6 +126,7 @@ function Shopping() {
     },
   };
 
+  // Style changing functions
   function retractSideBar() {
     const sidebar = document.querySelector(".shopping_side-bar__JgP6O");
     const overlay = document.querySelector(".shopping_overlay__lhS4s");
@@ -120,7 +148,57 @@ function Shopping() {
     body.style.backgroundColor = "white";
   }
 
+  function addProductsToPhysicalCart() {
+    // Add item to physical, UI shopping cart if it's not already there
+    let addThisToCartItems = true;
+    cartItems.map((item) => {
+      if (item === productToBeAdded) {
+        addThisToCartItems = false;
+        return 0;
+      }
+      return 0;
+    });
+    if (addThisToCartItems) {
+      setCartItems((prevState) => {
+        return [...prevState, productToBeAdded];
+      });
+    }
+  }
+
   whitePageBackground();
+
+  // Logic functions
+  function addItemToCart(product) {
+    setProductToBeAdded(product);
+    setUpdateShoppingCart(true);
+  }
+
+  // useEffect Hook
+  useEffect(() => {
+    // let addThisToCartItems = false;
+    if (updateShoppingCart === true) {
+      setCartProductQuantities((prevState) => {
+        const updatedCartProductQuantities = Object.fromEntries(
+          Object.entries(prevState).map(([key, value]) => {
+            if (String(key) === productToBeAdded) {
+              return [key, value + 1];
+            } else {
+              return [key, value];
+            }
+          })
+        );
+
+        return updatedCartProductQuantities;
+      });
+      setUpdateShoppingCart(false);
+      extendSideBar();
+
+      // Add item to physical, UI shopping cart if it's not already there
+      addProductsToPhysicalCart();
+      setProductToBeAdded("");
+    }
+    console.log(cartProductQuantities);
+  }, [updateShoppingCart]);
 
   return (
     <div
@@ -147,31 +225,15 @@ function Shopping() {
         </div>
         <div className={shoppingCss["side-bar-main-content"]}>
           <div className={shoppingCss["side-bar-products"]}>
-            {/* <ShoppingCartProduct
-              productName={productInfo.productNames.english}
-              image={productInfo.imagePaths.english}
-              price={productInfo.pricing.english}
-            ></ShoppingCartProduct> */}
-            {/* <ShoppingCartProduct
-              productName={productInfo.productNames.french}
-              image={productInfo.imagePaths.french}
-              price={productInfo.pricing.french}
-            ></ShoppingCartProduct> */}
-            {/* <ShoppingCartProduct
-              productName={productInfo.productNames.arabic}
-              image={productInfo.imagePaths.arabic}
-              price={productInfo.pricing.arabic}
-            ></ShoppingCartProduct> */}
-            {/* <ShoppingCartProduct
-              productName={productInfo.productNames.spanish}
-              image={productInfo.imagePaths.spanish}
-              price={productInfo.pricing.spanish}
-            ></ShoppingCartProduct> */}
-            {/* <ShoppingCartProduct
-              productName={productInfo.productNames.mandarin}
-              image={productInfo.imagePaths.mandarin}
-              price={productInfo.pricing.mandarin}
-            ></ShoppingCartProduct> */}
+            {/* Render the product items */}
+            {cartItems.map((item, index) => (
+              <ShoppingCartProduct
+                key={index}
+                productName={productInfo.productNames[item]}
+                image={productInfo.imagePaths[item]}
+                price={productInfo.pricing[item]}
+              />
+            ))}
           </div>
           <div className={shoppingCss["side-bar-sub-total"]}>
             <div>Subtotal</div>
@@ -210,60 +272,71 @@ function Shopping() {
               image={productInfo.imagePaths.english}
               description={productInfo.descriptions.english}
               price={productInfo.pricing.english}
+              addItemToCart={addItemToCart}
             ></Product>
             <Product
               productName={productInfo.productNames.french}
               image={productInfo.imagePaths.french}
               description={productInfo.descriptions.french}
               price={productInfo.pricing.french}
+              addItemToCart={addItemToCart}
             ></Product>
             <Product
               productName={productInfo.productNames.mandarin}
               image={productInfo.imagePaths.mandarin}
               description={productInfo.descriptions.mandarin}
               price={productInfo.pricing.mandarin}
+              addItemToCart={addItemToCart}
+              extendSideBar={extendSideBar}
             ></Product>
             <Product
               productName={productInfo.productNames.spanish}
               image={productInfo.imagePaths.spanish}
               description={productInfo.descriptions.spanish}
               price={productInfo.pricing.spanish}
+              addItemToCart={addItemToCart}
             ></Product>
             <Product
               productName={productInfo.productNames.german}
               image={productInfo.imagePaths.german}
               description={productInfo.descriptions.german}
               price={productInfo.pricing.german}
+              addItemToCart={addItemToCart}
             ></Product>
             <Product
               productName={productInfo.productNames.japanese}
               image={productInfo.imagePaths.japanese}
               description={productInfo.descriptions.japanese}
               price={productInfo.pricing.japanese}
+              addItemToCart={addItemToCart}
             ></Product>
             <Product
               productName={productInfo.productNames.italian}
               image={productInfo.imagePaths.italian}
               description={productInfo.descriptions.italian}
               price={productInfo.pricing.italian}
+              addItemToCart={addItemToCart}
             ></Product>
             <Product
               productName={productInfo.productNames.portuguese}
               image={productInfo.imagePaths.portuguese}
               description={productInfo.descriptions.portuguese}
               price={productInfo.pricing.portuguese}
+              addItemToCart={addItemToCart}
             ></Product>
             <Product
               productName={productInfo.productNames.hindi}
               image={productInfo.imagePaths.hindi}
               description={productInfo.descriptions.hindi}
               price={productInfo.pricing.hindi}
+              addItemToCart={addItemToCart}
             ></Product>
             <Product
               productName={productInfo.productNames.arabic}
               image={productInfo.imagePaths.arabic}
               description={productInfo.descriptions.arabic}
               price={productInfo.pricing.arabic}
+              addItemToCart={addItemToCart}
             ></Product>
           </div>
           <div className={shoppingCss["main-content-3"]}>

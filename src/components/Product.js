@@ -2,7 +2,12 @@ import React from "react";
 import shoppingCss from "./../styles/shopping.module.css";
 
 function Product(props) {
-  const { productName, image, description, price } = props;
+  const { productName, image, description, price, addItemToCart } = props;
+
+  function handleClick() {
+    const product = productName.toLowerCase();
+    addItemToCart(product);
+  }
 
   return (
     <div className={shoppingCss["product"]}>
@@ -19,6 +24,7 @@ function Product(props) {
       <button
         data-testid={`${productName}-add-to-cart`}
         className={shoppingCss["add-to-cart"]}
+        onClick={handleClick}
       >
         ADD TO CART
       </button>
