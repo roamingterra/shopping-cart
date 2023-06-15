@@ -23,15 +23,10 @@ function Shopping() {
     arabic: 0,
   });
 
-  const [productToBeAdded, setProductToBeAdded] = useState("");
-
-  // const [productToBePhysicallyAdded, setProductToBePhysicallyAdded] =
-  //   useState("");
-
-  const [cartItems, setCartItems] = useState([]);
-
-  const [updateShoppingCart, setUpdateShoppingCart] = useState(false);
-
+  const [productToBeAdded, setProductToBeAdded] = useState(""); // Used after add to cart button press to add to state cartProductQuantities and to determine whether to add to the UI shopping cart
+  const [cartItems, setCartItems] = useState([]); // All user chosen items that are meant to exist in the UI shopping cart
+  const [updateShoppingCart, setUpdateShoppingCart] = useState(false); // Used to trigger the useEffect hook
+  const [productToBeRemoved, setProductToBeRemoved] = useState(""); // Used after item X button press to queue for removal from to state cartProductQuantities and UI shopping cart
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
 
   // Product info object
@@ -173,9 +168,12 @@ function Shopping() {
     setUpdateShoppingCart(true);
   }
 
+  function removeProduct(product) {
+    setProductToBeRemoved(product);
+  }
+
   // useEffect Hook
   useEffect(() => {
-    // let addThisToCartItems = false;
     if (updateShoppingCart === true) {
       setCartProductQuantities((prevState) => {
         const updatedCartProductQuantities = Object.fromEntries(
@@ -197,8 +195,32 @@ function Shopping() {
       addProductsToPhysicalCart();
       setProductToBeAdded("");
     }
-    console.log(cartProductQuantities);
-  }, [updateShoppingCart]);
+
+    if (productToBeRemoved !== "") {
+      //remove product from cartItems
+      setCartItems((prevState) => {
+        return prevState
+          .map((item) => {
+            if (item !== productToBeRemoved) return item;
+            return null;
+          })
+          .filter((item) => item !== null);
+      });
+      setCartProductQuantities((prevState) => {
+        const updatedCartProductQuantities = Object.fromEntries(
+          Object.entries(prevState).map(([key, value]) => {
+            if (String(key).toLowerCase() === productToBeRemoved) {
+              return [key, 0];
+            } else {
+              return [key, value];
+            }
+          })
+        );
+
+        return updatedCartProductQuantities;
+      });
+    }
+  }, [updateShoppingCart, productToBeRemoved]);
 
   return (
     <div
@@ -232,6 +254,7 @@ function Shopping() {
                 productName={productInfo.productNames[item]}
                 image={productInfo.imagePaths[item]}
                 price={productInfo.pricing[item]}
+                removeProduct={removeProduct}
               />
             ))}
           </div>

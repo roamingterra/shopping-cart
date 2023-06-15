@@ -6,7 +6,12 @@ import { mdiMinus } from "@mdi/js";
 import { mdiPlus } from "@mdi/js";
 
 function Product(props) {
-  const { productName, image, price } = props;
+  const { productName, image, price, removeProduct } = props;
+
+  function handleXClick() {
+    const product = productName.toLowerCase();
+    removeProduct(product);
+  }
 
   return (
     <div
@@ -41,9 +46,12 @@ function Product(props) {
       <div className={shoppingCartProductsCss["section-3"]}>
         <Icon
           data-testid={`${productName}-cancel`}
-          className={shoppingCartProductsCss["remove-product"]}
+          className={`${
+            shoppingCartProductsCss[`remove-product`]
+          } ${productName}`}
           path={mdiWindowClose}
           size={1}
+          onClick={handleXClick}
         />
         <div>{`$${price}`}</div>
       </div>

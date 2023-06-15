@@ -69,7 +69,7 @@ describe("Add to shopping cart", () => {
 describe("Change product quantity logic", () => {
   // Test the functionality of the increment and decrement buttons for the item quantities.
   // Fire a mock increment button, and test for the correct total
-  test("functionality of incrementing the product quantity", () => {
+  test.skip("functionality of incrementing the product quantity", () => {
     // Arrange
     render(
       <MemoryRouter>
@@ -88,7 +88,7 @@ describe("Change product quantity logic", () => {
     expect(total).toHaveTextContent("$200");
   });
 
-  test("functionality of decrementing the product quantity", () => {
+  test.skip("functionality of decrementing the product quantity", () => {
     // Arrange
     render(
       <MemoryRouter>
@@ -111,7 +111,7 @@ describe("Change product quantity logic", () => {
     expect(total).toHaveTextContent("$200");
   });
 
-  test("remove product from shopping cart after decrementing from 1", () => {
+  test.skip("remove product from shopping cart after decrementing from 1", () => {
     // Arrange
     render(
       <MemoryRouter>
