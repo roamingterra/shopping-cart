@@ -29,6 +29,7 @@ function Shopping() {
   const [productToBeRemoved, setProductToBeRemoved] = useState(""); // Used after item X button press to queue for removal from to state cartProductQuantities and UI shopping cart
   const [productToBeIncremented, setProductToBeIncremented] = useState(""); // Used after item + button press to queue for incrementing the quantity in cartProductQuantities and UI shopping cart
   const [productToBeDecremented, setProductToBeDecremented] = useState(""); // Used after item - button press to queue for decrementing the quantity in cartProductQuantities and UI shopping cart
+  const [totalNumOfItems, setTotalNumOfItems] = useState(0);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
 
   // Product info object
@@ -292,6 +293,15 @@ function Shopping() {
       setProductToBeDecremented("");
     }
 
+    // Calculate and set total number of items
+    setTotalNumOfItems(() => {
+      return Math.round(
+        Object.values(cartProductQuantities).reduce((acc, value) => {
+          return acc + value;
+        }, 0)
+      );
+    });
+
     // Calculate and set to total price
     setCartTotalPrice(() => {
       return Math.round(
@@ -329,12 +339,10 @@ function Shopping() {
             size={2}
             onClick={retractSideBar}
           />
-          <Icon
-            className={shoppingCss["side-bar-shopping-cart"]}
-            path={mdiCartOutline}
-            title="Shopping Cart"
-            size={2}
-          />
+          <div className={shoppingCss["side-bar-shopping-cart"]}>
+            <div>{totalNumOfItems}</div>
+            <Icon path={mdiCartOutline} title="Shopping Cart" size={2} />
+          </div>
         </div>
         <div className={shoppingCss["shopping-cart-empty-message"]}>
           Your cart is empty
@@ -376,13 +384,15 @@ function Shopping() {
                 <div>roamingterra</div>
               </div>
             </Link>
-            <Icon
-              className={shoppingCss["shopping-cart"]}
-              path={mdiCartOutline}
-              title="Shopping Cart"
-              size={2}
-              onClick={extendSideBar}
-            />
+            <div className={shoppingCss["shopping-cart"]}>
+              <div>{totalNumOfItems}</div>
+              <Icon
+                path={mdiCartOutline}
+                title="Shopping Cart"
+                size={2}
+                onClick={extendSideBar}
+              />
+            </div>
           </div>
           <div className={shoppingCss["main-content-1"]}>
             Choose your language learning software
