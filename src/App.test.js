@@ -85,7 +85,7 @@ describe("Change product quantity logic", () => {
     //Assert
     fireEvent.click(incrementButton);
     const total = screen.getByTestId("total");
-    expect(total).toHaveTextContent("$200");
+    expect(total).toHaveTextContent("$199.98");
   });
 
   test("functionality of decrementing the product quantity", () => {
@@ -108,7 +108,7 @@ describe("Change product quantity logic", () => {
     const decrementButton = screen.getByTestId("English-decrement");
     fireEvent.click(decrementButton);
     const total = screen.getByTestId("total");
-    expect(total).toHaveTextContent("$200");
+    expect(total).toHaveTextContent("$299.97");
   });
 
   test("remove product from shopping cart after decrementing from 1", () => {

@@ -135,8 +135,10 @@ function Shopping() {
   function extendSideBar() {
     const sidebar = document.querySelector(".shopping_side-bar__JgP6O");
     const overlay = document.querySelector(".shopping_overlay__lhS4s");
-    sidebar.setAttribute("id", `${shoppingCss["side-bar-extended"]}`);
-    overlay.style.visibility = "visible";
+    if (sidebar && overlay) {
+      sidebar.setAttribute("id", `${shoppingCss["side-bar-extended"]}`);
+      overlay.style.visibility = "visible";
+    }
   }
 
   function whitePageBackground() {
@@ -153,8 +155,10 @@ function Shopping() {
     const cartItems = document.querySelector(
       ".shopping_side-bar-main-content__v3MWc"
     );
-    emptyMessage.style.display = "flex";
-    cartItems.style.display = "none";
+    if (emptyMessage && cartItems) {
+      emptyMessage.style.display = "flex";
+      cartItems.style.display = "none";
+    }
   }
 
   function populatedCartToggle() {
@@ -164,8 +168,10 @@ function Shopping() {
     const cartItems = document.querySelector(
       ".shopping_side-bar-main-content__v3MWc"
     );
-    emptyMessage.style.display = "none";
-    cartItems.style.display = "flex";
+    if (emptyMessage && cartItems) {
+      emptyMessage.style.display = "none";
+      cartItems.style.display = "flex";
+    }
   }
 
   function addProductsToPhysicalCart() {
@@ -304,11 +310,13 @@ function Shopping() {
 
     // Calculate and set to total price
     setCartTotalPrice(() => {
-      return Math.round(
-        Object.entries(cartProductQuantities).reduce((acc, [key, value]) => {
-          const totalPrice = value * productInfo.pricing[key];
-          return acc + totalPrice;
-        }, 0)
+      return (
+        Math.round(
+          Object.entries(cartProductQuantities).reduce((acc, [key, value]) => {
+            const totalPrice = value * productInfo.pricing[key];
+            return acc + totalPrice;
+          }, 0) * 100
+        ) / 100
       );
     });
 
