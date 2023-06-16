@@ -485,7 +485,7 @@ function Shopping() {
                 <div>
                   <div>What are the cancellation terms?</div>
                 </div>
-                <img src="/images/arrow-icon.svg" alt="arrow icon"></img>
+                <img src="./images/arrow-icon.svg" alt="arrow icon"></img>
               </div>
               <div className={shoppingCss["faq"]}>
                 <div>
@@ -494,7 +494,7 @@ function Shopping() {
                     using this software?
                   </div>
                 </div>
-                <img src="/images/arrow-icon.svg" alt="arrow icon"></img>
+                <img src="./images/arrow-icon.svg" alt="arrow icon"></img>
               </div>
               <div className={shoppingCss["faq"]}>
                 <div>
@@ -502,7 +502,7 @@ function Shopping() {
                     Can I access the language learning materials offline?
                   </div>
                 </div>
-                <img src="/images/arrow-icon.svg" alt="arrow icon"></img>
+                <img src="./images/arrow-icon.svg" alt="arrow icon"></img>
               </div>
             </div>
           </div>

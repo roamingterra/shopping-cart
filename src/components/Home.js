@@ -122,7 +122,7 @@ function Home() {
                   Find answers and suggestions to most common questions
                 </div>
               </div>
-              <img src="/images/help-center.png" alt="help center icon"></img>
+              <img src="./images/help-center.png" alt="help center icon"></img>
             </div>
             <div className={homeCss["community"]}>
               <div className={homeCss["community-text"]}>
@@ -133,14 +133,14 @@ function Home() {
                   Create connections with music creators like you
                 </div>
               </div>
-              <img src="/images/community.png" alt="community icon"></img>
+              <img src="./images/community.png" alt="community icon"></img>
             </div>
           </div>
         </div>
         <div className={homeCss["info"]}>
           <div className={homeCss["logo"]}>
             <div className={homeCss["logo-wrapper"]}>
-              <img src="/images/earth-logo.png" alt="earth logo" />
+              <img src="./images/earth-logo.png" alt="earth logo" />
               <span>roamingterra</span>
             </div>
           </div>
