@@ -52,14 +52,14 @@ function Home() {
           </div>
           <img
             className={homeCss["london"]}
-            src="/images/london-night.jpeg"
+            src="./images/london-night.jpeg"
             alt="london at night"
           ></img>
         </div>
         <div className={homeCss["main-content-3"]}>
           <img
             className={homeCss["paris"]}
-            src="/images/paris-night.jpeg"
+            src="./images/paris-night.jpeg"
             alt="paris at night"
           ></img>
           <div className={homeCss["description-container-3"]}>
@@ -93,7 +93,7 @@ function Home() {
 
           <img
             className={homeCss["japan"]}
-            src="/images/japan-night.jpeg"
+            src="./images/japan-night.jpeg"
             alt="japan at night"
           ></img>
         </div>
