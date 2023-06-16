@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "./static/css/main.49a6fbee.css",
-    "main.js": "./static/js/main.03ea7c75.js",
+    "main.js": "./static/js/main.0479e127.js",
     "static/media/earth-background.jpeg": "./static/media/earth-background.eaf9377d5f5330fee729.jpeg",
     "static/media/Gordita Bold.woff": "./static/media/Gordita Bold.162fc0c81c4880cb73f9.woff",
     "static/media/Gordita Medium.woff": "./static/media/Gordita Medium.8667baffc43f0db04fc3.woff",
     "static/media/Gordita Regular.woff": "./static/media/Gordita Regular.74727069bd5cbb1643f8.woff",
     "index.html": "./index.html",
     "main.49a6fbee.css.map": "./static/css/main.49a6fbee.css.map",
-    "main.03ea7c75.js.map": "./static/js/main.03ea7c75.js.map"
+    "main.0479e127.js.map": "./static/js/main.0479e127.js.map"
   },
   "entrypoints": [
     "static/css/main.49a6fbee.css",
-    "static/js/main.03ea7c75.js"
+    "static/js/main.0479e127.js"
   ]
 }
