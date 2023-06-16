@@ -85,14 +85,14 @@
 }
 
 .shopping-cart-empty-message {
-  display: none; /* flex */
+  display: none;
   justify-content: center;
   padding: 24px;
   font-family: "Gordita-Medium";
 }
 
 .side-bar-main-content {
-  display: flex; /* flex */
+  display: none;
   flex-direction: column;
   padding: 0 24px;
 }
@@ -136,6 +136,7 @@
   background-color: black;
   opacity: 0.8;
   z-index: 3;
+  cursor: pointer;
 }
 
 /* HEADER */

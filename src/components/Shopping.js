@@ -145,6 +145,28 @@ function Shopping() {
     body.style.backgroundColor = "white";
   }
 
+  function emptyCartToggle() {
+    const emptyMessage = document.querySelector(
+      ".shopping_shopping-cart-empty-message__KOway"
+    );
+    const cartItems = document.querySelector(
+      ".shopping_side-bar-main-content__v3MWc"
+    );
+    emptyMessage.style.display = "flex";
+    cartItems.style.display = "none";
+  }
+
+  function populatedCartToggle() {
+    const emptyMessage = document.querySelector(
+      ".shopping_shopping-cart-empty-message__KOway"
+    );
+    const cartItems = document.querySelector(
+      ".shopping_side-bar-main-content__v3MWc"
+    );
+    emptyMessage.style.display = "none";
+    cartItems.style.display = "flex";
+  }
+
   function addProductsToPhysicalCart() {
     // Add item to physical, UI shopping cart if it's not already there
     let addThisToCartItems = true;
@@ -269,6 +291,24 @@ function Shopping() {
       });
       setProductToBeDecremented("");
     }
+
+    // Calculate and set to total price
+    setCartTotalPrice(() => {
+      return Math.round(
+        Object.entries(cartProductQuantities).reduce((acc, [key, value]) => {
+          const totalPrice = value * productInfo.pricing[key];
+          return acc + totalPrice;
+        }, 0)
+      );
+    });
+
+    // Toggle empty/populated cart views
+    console.log(cartItems);
+    if (cartItems.length === 0) {
+      emptyCartToggle();
+    } else {
+      populatedCartToggle();
+    }
   }, [
     updateShoppingCart,
     productToBeRemoved,
@@ -317,16 +357,17 @@ function Shopping() {
           </div>
           <div className={shoppingCss["side-bar-sub-total"]}>
             <div>Subtotal</div>
-            <div data-testid="total" className={shoppingCss["total"]}>
-              $200
-            </div>
+            <div
+              data-testid="total"
+              className={shoppingCss["total"]}
+            >{`$${cartTotalPrice}`}</div>
           </div>
           <button className={shoppingCss["side-bar-checkout"]}>
             PROCEED TO CHECKOUT
           </button>
         </div>
       </div>
-      <div className={shoppingCss["overlay"]}></div>
+      <div className={shoppingCss["overlay"]} onClick={retractSideBar}></div>
       <div className={shoppingCss["content-and-footer-wrapper"]}>
         <div className={shoppingCss["content-wrapper"]}>
           <div className={shoppingCss["header"]}>
