@@ -15,7 +15,7 @@ The goals of this project were to;
 
 # Install and run
 
-git clone git@github.com:roamingterra/memory-card.git<br>
-cd memory-card<br>
+git clone git@github.com:roamingterra/shopping-cart.git<br>
+cd shopping-cart<br>
 npm install<br>
 npm run start
