@@ -27,6 +27,8 @@ function Shopping() {
   const [cartItems, setCartItems] = useState([]); // All user chosen items that are meant to exist in the UI shopping cart
   const [updateShoppingCart, setUpdateShoppingCart] = useState(false); // Used to trigger the useEffect hook
   const [productToBeRemoved, setProductToBeRemoved] = useState(""); // Used after item X button press to queue for removal from to state cartProductQuantities and UI shopping cart
+  const [productToBeIncremented, setProductToBeIncremented] = useState(""); // Used after item + button press to queue for incrementing the quantity in cartProductQuantities and UI shopping cart
+  const [productToBeDecremented, setProductToBeDecremented] = useState(""); // Used after item - button press to queue for decrementing the quantity in cartProductQuantities and UI shopping cart
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
 
   // Product info object
@@ -172,6 +174,14 @@ function Shopping() {
     setProductToBeRemoved(product);
   }
 
+  function incrementProductQuantity(product) {
+    setProductToBeIncremented(product);
+  }
+
+  function decrementProductQuantity(product) {
+    setProductToBeDecremented(product);
+  }
+
   // useEffect Hook
   useEffect(() => {
     if (updateShoppingCart === true) {
@@ -219,8 +229,52 @@ function Shopping() {
 
         return updatedCartProductQuantities;
       });
+      setProductToBeRemoved("");
     }
-  }, [updateShoppingCart, productToBeRemoved]);
+
+    if (productToBeIncremented !== "") {
+      setCartProductQuantities((prevState) => {
+        const updatedCartProductQuantities = Object.fromEntries(
+          Object.entries(prevState).map(([key, value]) => {
+            if (String(key).toLowerCase() === productToBeIncremented) {
+              return [key, value + 1];
+            } else {
+              return [key, value];
+            }
+          })
+        );
+
+        return updatedCartProductQuantities;
+      });
+      setProductToBeIncremented("");
+    }
+
+    if (productToBeDecremented !== "") {
+      setCartProductQuantities((prevState) => {
+        const updatedCartProductQuantities = Object.fromEntries(
+          Object.entries(prevState).map(([key, value]) => {
+            if (String(key).toLowerCase() === productToBeDecremented) {
+              if (value === 1) {
+                setProductToBeRemoved(key);
+                return [key, value];
+              }
+              return [key, value - 1];
+            } else {
+              return [key, value];
+            }
+          })
+        );
+
+        return updatedCartProductQuantities;
+      });
+      setProductToBeDecremented("");
+    }
+  }, [
+    updateShoppingCart,
+    productToBeRemoved,
+    productToBeIncremented,
+    productToBeDecremented,
+  ]);
 
   return (
     <div
@@ -255,6 +309,9 @@ function Shopping() {
                 image={productInfo.imagePaths[item]}
                 price={productInfo.pricing[item]}
                 removeProduct={removeProduct}
+                quantity={cartProductQuantities[item]}
+                incrementProductQuantity={incrementProductQuantity}
+                decrementProductQuantity={decrementProductQuantity}
               />
             ))}
           </div>

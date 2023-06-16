@@ -6,11 +6,29 @@ import { mdiMinus } from "@mdi/js";
 import { mdiPlus } from "@mdi/js";
 
 function Product(props) {
-  const { productName, image, price, removeProduct } = props;
+  const {
+    productName,
+    image,
+    price,
+    removeProduct,
+    quantity,
+    incrementProductQuantity,
+    decrementProductQuantity,
+  } = props;
 
   function handleXClick() {
     const product = productName.toLowerCase();
     removeProduct(product);
+  }
+
+  function handlePlusClick() {
+    const product = productName.toLowerCase();
+    incrementProductQuantity(product);
+  }
+
+  function handleMinusClick() {
+    const product = productName.toLowerCase();
+    decrementProductQuantity(product);
   }
 
   return (
@@ -33,13 +51,15 @@ function Product(props) {
             className={shoppingCartProductsCss["decrement"]}
             path={mdiMinus}
             size={1}
+            onClick={handleMinusClick}
           />
-          <div className={shoppingCartProductsCss["quantity"]}></div>
+          <div className={shoppingCartProductsCss["quantity"]}>{quantity}</div>
           <Icon
             data-testid={`${productName}-increment`}
             className={shoppingCartProductsCss["increment"]}
             path={mdiPlus}
             size={1}
+            onClick={handlePlusClick}
           />
         </div>
       </div>
