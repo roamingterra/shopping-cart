@@ -187,7 +187,7 @@ function Home() {
         <div className={homeCss["credits"]}>
           <div>Website created by Daniel Ballerini</div>
           <div>
-            with help from{" "}
+            project idea from{" "}
             <a href="https://www.theodinproject.com/"> © Odin Project</a>
           </div>
         </div>

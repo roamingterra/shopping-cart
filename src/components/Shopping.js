@@ -527,7 +527,7 @@ function Shopping() {
           <div className={shoppingCss["credits"]}>
             <div>Website created by Daniel Ballerini</div>
             <div>
-              with help from{" "}
+              project idea from{" "}
               <a href="https://www.theodinproject.com/"> © Odin Project</a>
             </div>
           </div>
